@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project index{% endblock %}
+
+{% block body %}
+    <h1>Project index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Description</th>
+                <th>Link</th>
+                <th>Path</th>
+                <th>Mywork</th>
+                <th>Datebeginning</th>
+                <th>Dateend</th>
+                <th>Learningdescription</th>
+                <th>Drawing</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for project in projects %}
+            <tr>
+                <td>{{ project.id }}</td>
+                <td>{{ project.name }}</td>
+                <td>{{ project.company }}</td>
+                <td>{{ project.description }}</td>
+                <td>{{ project.link }}</td>
+                <td>{{ project.path }}</td>
+                <td>{{ project.mywork }}</td>
+                <td>{{ project.datebeginning ? project.datebeginning|date('Y-m-d') : '' }}</td>
+                <td>{{ project.dateend ? project.dateend|date('Y-m-d') : '' }}</td>
+                <td>{{ project.learningdescription }}</td>
+                <td>{{ project.drawing }}</td>
+                <td>
+                    <a href="{{ path('project_show', {'id': project.id}) }}">show</a>
+                    <a href="{{ path('project_edit', {'id': project.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('project_new') }}">Create new</a>
+{% endblock %}

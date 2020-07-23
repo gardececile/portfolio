@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project{% endblock %}
+
+{% block body %}
+    <h1>Project</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ project.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ project.name }}</td>
+            </tr>
+            <tr>
+                <th>Company</th>
+                <td>{{ project.company }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ project.description }}</td>
+            </tr>
+            <tr>
+                <th>Link</th>
+                <td>{{ project.link }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ project.path }}</td>
+            </tr>
+            <tr>
+                <th>Mywork</th>
+                <td>{{ project.mywork }}</td>
+            </tr>
+            <tr>
+                <th>Datebeginning</th>
+                <td>{{ project.datebeginning ? project.datebeginning|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Dateend</th>
+                <td>{{ project.dateend ? project.dateend|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Learningdescription</th>
+                <td>{{ project.learningdescription }}</td>
+            </tr>
+            <tr>
+                <th>Drawing</th>
+                <td>{{ project.drawing }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('project_index') }}">back to list</a>
+
+    <a href="{{ path('project_edit', {'id': project.id}) }}">edit</a>
+
+    {{ include('project/_delete_form.html.twig') }}
+{% endblock %}
