@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProjectRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -66,6 +68,22 @@ class Project
      * @ORM\Column(type="text", nullable=true)
      */
     private $drawing;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Skill::class, inversedBy="projects")
+     */
+    private $skills;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Person::class, mappedBy="projects")
+     */
+    private $people;
+
+    public function __construct()
+    {
+        $this->skills = new ArrayCollection();
+        $this->people = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -188,6 +206,60 @@ class Project
     public function setDrawing(?string $drawing): self
     {
         $this->drawing = $drawing;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Skill[]
+     */
+    public function getSkills(): Collection
+    {
+        return $this->skills;
+    }
+
+    public function addSkill(Skill $skill): self
+    {
+        if (!$this->skills->contains($skill)) {
+            $this->skills[] = $skill;
+        }
+
+        return $this;
+    }
+
+    public function removeSkill(Skill $skill): self
+    {
+        if ($this->skills->contains($skill)) {
+            $this->skills->removeElement($skill);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Person[]
+     */
+    public function getPeople(): Collection
+    {
+        return $this->people;
+    }
+
+    public function addPerson(Person $person): self
+    {
+        if (!$this->people->contains($person)) {
+            $this->people[] = $person;
+            $person->addProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removePerson(Person $person): self
+    {
+        if ($this->people->contains($person)) {
+            $this->people->removeElement($person);
+            $person->removeProject($this);
+        }
 
         return $this;
     }
