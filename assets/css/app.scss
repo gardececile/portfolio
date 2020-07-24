@@ -1,3 +1,124 @@
+@import "~bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+
+$text-error: rgb(220, 0, 0);
+$text-success: rgb(40, 220, 40);
+$text-back: rgb(0, 180, 220);
+$text-edit: rgb(200, 125, 0);
+$text-show: rgb(200, 100, 240);
+$text-default: rgb(0, 0, 0);
+$text-default-white: rgb(245, 245, 245);
+
+$text-h1: #07000F;
+$shade1: #07000F;
+$shade2: #264474;
+$shade3: #ffffff;
+$shade4: #AF77B1;
+$foncee: #E65462;
+$clair: #F5BBB8;
 body {
-    background-color: deepskyblue;
+    background-color:$clair;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+li {
+    list-style: none;
+}
+
+table {
+
+    tr {
+
+        th {
+            text-transform: uppercase;
+        }
+
+        td {
+            li {
+                list-style: none;
+            }
+
+            img {
+                width: 100px !important;
+                height: auto;
+            }
+        }
+    }
+}
+
+nav {
+    .trash {
+
+        float: right;
+    }
+}
+
+nav {
+    font-family: 'Open Sans', sans-serif;
+    color:$foncee;
+    display: flex !important;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding-left: 0;
+    }
+
+    li {
+        color: #fff;
+        display: block;
+        float: left;
+        padding: 1.6rem 1rem 1rem;
+        position: relative;
+        text-decoration: none;
+        transition-duration: 0.5s;
+    }
+    li a {
+        color: #fff;
+    }
+
+    li:hover {
+        //background: red;
+        cursor: pointer;
+    }
+
+    ul li ul {
+        visibility: hidden;
+        opacity: 0;
+        //min-width: 5rem;
+        position: absolute;
+        transition: all 0.5s ease;
+        margin-top: 1rem;
+        left: 0;
+        display: none;
+        min-width:100%;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    ul li:hover > ul,
+    ul li:focus-within > ul, /* this is the line we add */
+    ul li ul:hover {
+        transition: all .5s ease;
+        visibility: visible;
+        opacity: 1;
+        display: block;
+    }
+
+    ul li ul li {
+        clear: both;
+        width: 100%;
+        //word-break:break-all;
+    }
+
+    nav li:nth-last-of-type(n) {
+        display: inline;
+        float: right;
+    }
 }

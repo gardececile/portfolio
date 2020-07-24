@@ -1,13 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %} {{ encore_entry_link_tags('app') }}{% endblock %}
+        <meta name="author" content="Cécile GARDE">
+        <meta name="description" content="portfolio de mon travail de développeuse web junior">
+        <link rel="icon" href="/uploads/images/favico.png" type="image/png" sizes="128x128">
+        <script src="https://kit.fontawesome.com/0f77bf6f9a.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}Portfolio de Cécile Garde{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
     </head>
     <body>
     {% include "/layout/navbar.html.twig" %}
         {% block body %}{% endblock %}
-        {% block javascripts %} {{ encore_entry_script_tags('app') }}{% endblock %}
+        {% block content %}{% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+{#            <script>#}
+{#                $('.custom-file-input').on('change', function(event) {#}
+{#                    let inputFile = event.currentTarget;#}
+{#                    $(inputFile).parent()#}
+{#                        .find('.custom-file-label')#}
+{#                        .html(inputFile.files[0].name);#}
+{#                    console.log(inputFile.files);#}
+{#                });#}
+{#            </script>#}
+        {% endblock %}
     </body>
 </html>
